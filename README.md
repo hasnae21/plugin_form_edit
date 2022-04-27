@@ -37,3 +37,72 @@
           <button class="btn btn-primary btn-block mb-4" style="">Send</button>
         </form>
       </section>
+
+
+
+
+
+
+
+
+
+
+
+
+      
+<form id="mdb-validate-form" class="text-center needs-validation was-validated" style="width: 100%; max-width: 300px" novalidate="" method="POST">
+
+<!-- Name input -->
+<div class="form-outline mb-4">
+    <label class="form-label" for="mdb-validation-name" style="margin-left: 0px;">Name</label>
+    <input type="text" id="mdb-validation-name" name="name" placeholder="Entre your nom here" class="form-control" required>
+
+          <div class="invalid-feedback">Please provide your name.
+          </div>
+          <div class="form-notch">
+            <div class="form-notch-leading" style="width: 9px;"></div>
+            <div class="form-notch-middle" style="width: 41.6px;"></div>
+            <div class="form-notch-trailing"></div>
+          </div>
+</div>
+    
+    
+    
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <label class="form-label" for="mdb-validation-email" style="margin-left: 0px;">Email address</label>
+        <input type="email" id="mdb-validation-email" name="email" placeholder="Entre your email here" class="form-control" required>
+
+          <div class="invalid-feedback">Please provide your email.</div>
+          <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div>
+
+
+    </div>
+
+
+            <!-- Subject input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="mdb-validation-subject" style="margin-left: 0px;">Subject</label>
+          <input type="text" id="mdb-validation-subject" name="subject"  placeholder="Entre the subject here" class="form-control" required>
+
+          <div class="invalid-feedback">Please provide mail subject.</div>
+          <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 50.4px;"></div><div class="form-notch-trailing"></div></div>
+          
+        
+        </div>
+                
+                
+                
+                <!-- Message input -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="mdb-validation-message" style="margin-left: 0px;">Message</label>
+                    <textarea class="form-control" id="mdb-validation-message" name="message" rows="4" required placeholder="Entre your questions or messages" name="message"></textarea>
+
+            <div class="invalid-feedback">Please provide a message text.</div>
+          <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 60px;"></div><div class="form-notch-trailing"></div></div></div>
+                    
+                    <hr><br>
+
+                    <!-- Submit button -->
+                    <input type="submit" class="btn btn-primary btn-block mb-4" name="submit" value="Send"/>
+                    </form>

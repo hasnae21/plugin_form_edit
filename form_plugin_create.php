@@ -1,54 +1,132 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <?php
+    /**
+     * Plugin Name:       Create_Form
+     * Description:       Creating a form that will be saved in database and make a usefull shortcode for it 
+     * Version:           2.5
+     * Author:            Hasnae Ahouzi
+     */
+    ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Font Awesome -->
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css"
+  rel="stylesheet"
+/>
+    
+    <title>Form</title>
+</head>
+<body>
+
+<section class="w-100 p-4 d-flex justify-content-center pb-4">
 
 <?php
-/**
- * Plugin Name:       Create_Form
- * Description:       Creating a form that will be saved in database and make a usefull shortcode for it 
- * Version:           1.0.4
- * Author:            Hasnae Ahouzi
- */
+
+$path = preg_replace('/wp-content.*$/','',__DIR__);
+require_once($path.'wp-load.php');
 
 function form_plugin(){
-    $form = '';
-    $form .= '<form action="#" method="POST"> ';
+?>
 
-    $form .= '<label for="first_name">Prénom: </label>';
-    $form .= '<input type="text" id="first_name" class="form-control" name="first_name" placeholder="Entrer votre prénom svp" required/> <br> ';
-    
-    $form .= '<label for="last_name">Nom: </label>';
-    $form .= '<input type="text" id="last_name" class="form-control" name="last_name" placeholder="Entrer votre nom svp" required/><br> ';
-    
-    $form .= '<label for="email">Email: </label>';
-    $form .= '<input type="email" id="email" class="form-control" name="email" placeholder="Entrer votre email svp" required/><br> ';
-    
-    $form .= '<label for="phone">Telephone: </label>';
-    $form .= '<input type="number" id="phone" pattern="[0-9]{10}" class="form-control" name="phone" placeholder="Entrer votre numero de telephone svp" required/><br> ';
-    
-    $form .= '<label for="message">Message ou Questions: </label> ';
-    $form .= '<textarea name="message" id="message" class="form-control" placeholder="Entrer vos questions ou vos message" required></textarea> <br>';
-    
-    $form .= '<input type="submit" class="btn btn-info" name="form_submit" value="Envoyer"/> ';
-    $form .= '</form>';
-    
-    if (isset($_POST['form_submit'])) {
-        $fname = $_POST['first_name'];
-        $lname = $_POST['last_name'];
-        $email = $_POST['email'];
-        $phone = $_POST['phone'];
-        $message = $_POST['message'];
-        
-        //table name: 'wp_plugin_form'
-        global $wpdb;
-        $wpdb->insert('wp_plugin_form', array('firstName' => $fname, 'lastName' => $lname, 'email' => $email, 'phone' => $phone, 'message' => $message));
-    }
+<form id="mdb-validate-form" class="text-center needs-validation was-validated" style="width: 100%; max-width: 300px" novalidate="" method="POST" action="">
+<h2>Contact us</h2><br>
 
-    return $form;
+          <!-- Name input -->
+          <div class="form-outline mb-4">
+
+            <input type="text" id="mdb-validation-name" name="name" placeholder="Entre your nom here" class="form-control" required>
+
+            <label class="form-label" for="mdb-validation-name" style="margin-left: 0px;">Name</label>
+            <div class="invalid-feedback">Please provide your name.</div>
+          <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 41.6px;"></div><div class="form-notch-trailing"></div></div></div>
+          <br>
+
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+
+            <input type="email" id="mdb-validation-email" name="email" placeholder="Entre your email here" class="form-control" required>
+
+            <label class="form-label" for="mdb-validation-email" style="margin-left: 0px;">Email address</label>
+            <div class="invalid-feedback">Please provide your email.</div>
+          <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div></div>
+          <br>
+
+          <!-- Subject input -->
+          <div class="form-outline mb-4">
+
+            <input type="text" id="mdb-validation-subject" name="subject"  placeholder="Entre the subject here" class="form-control" required>
+
+            <label class="form-label" for="mdb-validation-subject" style="margin-left: 0px;">Subject</label>
+            <div class="invalid-feedback">Please provide mail subject.</div>
+          <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 50.4px;"></div><div class="form-notch-trailing"></div></div></div>
+          <br>
+
+          <!-- Message input -->
+          <div class="form-outline mb-4">
+
+            <textarea class="form-control" id="mdb-validation-message" name="message" rows="4" required placeholder="Entre your questions or messages" name="message"></textarea>
+
+            <label class="form-label" for="mdb-validation-message" style="margin-left: 0px;">Message</label>
+            <div class="invalid-feedback">Please provide a message text.</div>
+          <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 60px;"></div><div class="form-notch-trailing"></div></div></div>
+          <br>
+
+          <!-- Submit button -->
+          <input type="submit" class="btn btn-dark btn-block mb-4" name="submit" value="Send"/>
+
+          <!-- <button type="submit" class="btn btn-dark btn-block mb-4" name="submit" >Send</button> -->
+</form>
+<?php
+
+if (isset($_POST['submit'])) {
+  echo "testing";
+
+  global $wpdb;
+
+  $name = $_POST['name'];
+  $email = $_POST['email'];
+  $subject = $_POST['subject'];
+  $message = $_POST['message'];
+                      
+  //table name: 'wp_plugin_form'  
+  $wpdb->insert('wp_plugin_form', array('name' => $name, 'email' => $email, 'subject' => $subject, 'message' => $message));
+}
+
+?>
+<br><br>
+
+<?php
 }
 //form shortcode [form_shortcode]
 add_shortcode('form_shortcode', 'form_plugin');
+?>
+
+</section>
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"
+></script>
+</body>
+</html>
 
 
+<?php
 function wporg_options_page() {
     add_menu_page(
         'Contact_form',
@@ -59,8 +137,9 @@ function wporg_options_page() {
         'dashicons-forms',
         100
     );
-
-    //add_submenu_page( string $parent_slug, string $page_title, string $menu_title, string $capability, string $menu_slug, callable $function = '', int $position = null )
 }
 //admin settings options
 add_action( 'admin_menu', 'wporg_options_page' );
+?>
+
+<!--SELECT FROM `wp_options` WHERE `wp_options`.`option_id` = 675;  -->

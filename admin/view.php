@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,48 +22,23 @@
   <title>Document</title>
 </head>
 <body>
-  
-
-
-
-
-
-
-
-
-
-
 
 
 <section class="w-100 row p-4 d-flex justify-content-center pb-4">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   <form  class="col-1"  method="post" actoin="#"  > 
     <br><br><br><br><br>
     <input style="margin-top: -15px; " type="checkbox" name="name_box" value=""> <br><br><br>
     <input style="margin-top: 0px;" type="checkbox" name="email_box" value=""> <br><br><br>
-    <input style="margin-top: 0px;" type="checkbox" name="mdb-validation-subject_box" value=""> <br><br><br><br>
-    <input style="margin-top: 0px;" type="checkbox" name="message_box" value=""> <br><br><br><br>
+    <input style="margin-top: 0px;" type="checkbox" name="subject_box" value=""> <br><br><br><br>
+    <input style="margin-top: 0px;" type="checkbox" name="message_box" value="" checked> <br><br><br><br>
    <hr>
     <button type="submit" name="submit_box" class="btn btn-primary btn-block mb-4" style="">save</button>
   </form>
  
-<?php
 
+
+<?php
 if(isset($_POST['submit_box'])){
         global $wpdb;
         //name input 1 
@@ -85,13 +59,13 @@ if(isset($_POST['submit_box'])){
             }
 
       // subject input 3 
-    if(isset($_POST['mdb-validation-subject_box'])){
+    if(isset($_POST['subject_box'])){
 
          
-      $wpdb->insert('wp_options', array('option_name' =>'mdb-validation-subject_box', 'option_value' => 11));
+      $wpdb->insert('wp_options', array('option_name' =>'subject_box', 'option_value' => 11));
     }
     else{
-         $wpdb->insert('wp_options', array('option_name' =>'mdb-validation-subject_box', 'option_value' => 22));
+         $wpdb->insert('wp_options', array('option_name' =>'subject_box', 'option_value' => 22));
 
     }
 
@@ -105,66 +79,32 @@ if(isset($_POST['submit_box'])){
         
       $wpdb->insert('wp_options', array('option_name' => 'message_box', 'option_value' => 22));   
     }
-
- 
-
-
-
-
 }
 ?>
 
+        <div id="mdb-validate-form col-1 ml-1" class="text-center needs-validation was-validated" style="width: 100%; max-width: 300px" novalidate="">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div id="mdb-validate-form col-1 ml-1 class="text-center needs-validation was-validated" style="width: 100%; max-width: 300px" novalidate="">
           <h2>Contact us setting</h2>
                 <br><br>
           <!-- Name input -->
           <div class="form-outline mb-4">
-          
             <input type="text" id="mdb-validation-name" name="name" class="form-control" required="">
             <label class="form-label" for="mdb-validation-name" style="margin-left: 0px;">Name</label>
-            <div class="invalid-feedback">Please provide your name.</div>
-          <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 41.6px;"></div><div class="form-notch-trailing"></div></div></div>
+            
+          <div class="invalid-feedback">Please provide your name.
+          </div>
+          <div class="form-notch">
+            <div class="form-notch-leading" style="width: 9px;"></div>
+            <div class="form-notch-middle" style="width: 41.6px;"></div>
+            <div class="form-notch-trailing"></div>
+          </div>
+        </div>
 
           <!-- Email input -->
           <div class="form-outline mb-4">
             <input type="email" id="mdb-validation-email" name="email" class="form-control" required="">
             <label class="form-label" for="mdb-validation-email" style="margin-left: 0px;">Email address</label>
+
             <div class="invalid-feedback">Please provide your email.</div>
           <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div></div>
 
@@ -172,6 +112,7 @@ if(isset($_POST['submit_box'])){
           <div class="form-outline mb-4">
             <input type="text" id="subject" name="mdb-validation-subject" class="form-control" required="">
             <label class="form-label" for="mdb-validation-subject" style="margin-left: 0px;">Subject</label>
+
             <div class="invalid-feedback">Please provide mail subject.</div>
           <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 50.4px;"></div><div class="form-notch-trailing"></div></div></div>
 
@@ -179,30 +120,13 @@ if(isset($_POST['submit_box'])){
           <div class="form-outline mb-4">
             <textarea class="form-control" id="mdb-validation-message" name="message" rows="4" required=""></textarea>
             <label class="form-label" for="mdb-validation-message" style="margin-left: 0px;">Message</label>
+
             <div class="invalid-feedback">Please provide a message text.</div>
           <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 60px;"></div><div class="form-notch-trailing"></div></div></div>
 
-          <!-- Submit button -->
-         
 </div>
-      </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</section>
 
 <script
   type="text/javascript"
