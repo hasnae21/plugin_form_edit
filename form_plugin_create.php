@@ -160,5 +160,3 @@ function wporg_options_page() {
 //admin settings options
 add_action( 'admin_menu', 'wporg_options_page' );
 ?>
-
-<!--SELECT FROM `wp_options` WHERE `wp_options`.`option_id` = 675;  -->
