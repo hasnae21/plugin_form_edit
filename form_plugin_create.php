@@ -37,17 +37,18 @@
 <section class="w-100 p-4 d-flex justify-content-center pb-4">
 
 <?php
-
-$path = preg_replace('/wp-content.*$/','',__DIR__);
-require_once($path.'wp-load.php');
-
 function form_plugin(){
 ?>
 
-<form id="mdb-validate-form" class="text-center needs-validation was-validated" style="width: 100%; max-width: 300px" novalidate="" method="POST" action="">
+<form id="mdb-validate-form" class="text-center needs-validation was-validated" style="width: 100%; max-width: 300px" novalidate="" method="post" action="">
 <h2>Contact us</h2><br>
 
           <!-- Name input -->
+          <?php 
+          if(get_option("name_box")==11){
+            $name = $_POST['name'];
+            
+          ?>
           <div class="form-outline mb-4">
 
             <input type="text" id="mdb-validation-name" name="name" placeholder="Entre your nom here" class="form-control" required>
@@ -55,19 +56,32 @@ function form_plugin(){
             <label class="form-label" for="mdb-validation-name" style="margin-left: 0px;">Name</label>
             <div class="invalid-feedback">Please provide your name.</div>
           <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 41.6px;"></div><div class="form-notch-trailing"></div></div></div>
+          <?php 
+          }
+          ?>
           <br>
 
           <!-- Email input -->
+          <?php 
+          if(get_option("email_box")==11){
+            $email = $_POST['email'];
+          ?>
           <div class="form-outline mb-4">
-
             <input type="email" id="mdb-validation-email" name="email" placeholder="Entre your email here" class="form-control" required>
 
             <label class="form-label" for="mdb-validation-email" style="margin-left: 0px;">Email address</label>
             <div class="invalid-feedback">Please provide your email.</div>
           <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div></div>
+          <?php 
+          }
+          ?>
           <br>
 
           <!-- Subject input -->
+          <?php 
+          if(get_option("subject_box")==11){
+            $subject = $_POST['subject'];
+          ?>
           <div class="form-outline mb-4">
 
             <input type="text" id="mdb-validation-subject" name="subject"  placeholder="Entre the subject here" class="form-control" required>
@@ -75,47 +89,52 @@ function form_plugin(){
             <label class="form-label" for="mdb-validation-subject" style="margin-left: 0px;">Subject</label>
             <div class="invalid-feedback">Please provide mail subject.</div>
           <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 50.4px;"></div><div class="form-notch-trailing"></div></div></div>
+          <?php 
+          }
+          ?>
           <br>
 
           <!-- Message input -->
+          <?php 
+          if(get_option("message_box")==11){
+            $message = $_POST['message'];
+          ?>
           <div class="form-outline mb-4">
 
-            <textarea class="form-control" id="mdb-validation-message" name="message" rows="4" required placeholder="Entre your questions or messages" name="message"></textarea>
+            <textarea class="form-control" id="mdb-validation-message" name="message" rows="4" required placeholder="Entre your questions or messages" ></textarea>
 
             <label class="form-label" for="mdb-validation-message" style="margin-left: 0px;">Message</label>
             <div class="invalid-feedback">Please provide a message text.</div>
           <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 60px;"></div><div class="form-notch-trailing"></div></div></div>
+          <?php 
+          }
+          ?>
           <br>
 
           <!-- Submit button -->
-          <input type="submit" class="btn btn-dark btn-block mb-4" name="submit" value="Send"/>
+          <input type="submit" class="btn btn-dark btn-block mb-4" name="submit" value="submit"/>
 
-          <!-- <button type="submit" class="btn btn-dark btn-block mb-4" name="submit" >Send</button> -->
 </form>
+<br><br>
+
+
 <?php
 
 if (isset($_POST['submit'])) {
-  echo "testing";
 
-  global $wpdb;
-
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $subject = $_POST['subject'];
-  $message = $_POST['message'];
-                      
   //table name: 'wp_plugin_form'  
-  $wpdb->insert('wp_plugin_form', array('name' => $name, 'email' => $email, 'subject' => $subject, 'message' => $message));
+  global $wpdb;
+  $wpdb->insert('wp_plugin_form', TAB array[]]);
 }
-
 ?>
-<br><br>
 
 <?php
+
 }
 //form shortcode [form_shortcode]
 add_shortcode('form_shortcode', 'form_plugin');
 ?>
+
 
 </section>
 <script
@@ -142,3 +161,4 @@ function wporg_options_page() {
 add_action( 'admin_menu', 'wporg_options_page' );
 ?>
 
+<!--SELECT FROM `wp_options` WHERE `wp_options`.`option_id` = 675;  -->
