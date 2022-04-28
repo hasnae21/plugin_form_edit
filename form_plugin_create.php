@@ -109,7 +109,8 @@ function form_plugin(){
           <br>
 
           <!-- Submit button -->
-          <input type="submit" class="btn btn-dark btn-block mb-4" name="submit" value="submit"/>
+                <button class="btn btn-dark btn-block mb-4" name="submit">Send</button>
+          <!--<input type="submit" class="btn btn-dark btn-block mb-4" name="submit" value="submit"/> -->
 
 </form>
 <br><br>
